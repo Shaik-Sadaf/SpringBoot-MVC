@@ -1,0 +1,108 @@
+
+<!----
+<form th:action="@{/editproduct}" method="post">
+    <input type="hidden" name="id" th:value="${product.id}">
+    
+	<label>Product id:</label>
+	<input type="text" name="productId" class="form-control" th:value="${product.id}" required>
+
+	 <label>Product Name:</label>
+	 <input type="text" name="name" class="form-control" th:value="${product.name}" required>
+
+
+    <label>Price:</label>
+    <input type="number" name="price" class="form-control" th:value="${product.price}" required>
+
+    <label>Quantity:</label>
+    <input type="number" name="quantity" class="form-control" th:value="${product.quantity}" required>
+
+    <label>Made In:</label>
+    <input type="text" name="madeIn" class="form-control" th:value="${product.madeIn}" required>
+
+    <label>Brand:</label>
+    <input type="text" name="brand" class="form-control" th:value="${product.brand}" required>
+
+    <button type="submit" class="btn btn-success">Save Changes</button>
+</form>
+>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for the form */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control[readonly] {
+            background-color: #f8f9fa;
+            cursor: not-allowed;
+        }
+        .btn-primary {
+            margin-top: 20px;
+            width: 100%;
+        }
+        .btn-back {
+            margin-top: 10px;
+            width: 100%;
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Product Details</h2>
+
+    <!-- Form for displaying the product details -->
+    <form th:action="@{/editproduct}" method="get">
+        <!-- Hidden input to carry the product id -->
+        <input type="text" name="id" th:value="${id}" disabled="disabled" class="form-control mb-3">
+
+        <div class="form-group">
+            <label class="form-label">Product Name:</label>
+            <input type="text" class="form-control" th:value="${productModel.name}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Price:</label>
+            <input type="number" class="form-control" th:value="${productModel.price}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Quantity:</label>
+            <input type="number" class="form-control" th:value="${productModel.quantity}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Made In:</label>
+            <input type="text" class="form-control" th:value="${productModel.madeIn}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Brand:</label>
+            <input type="text" class="form-control" th:value="${productModel.brand}" readonly>
+        </div>
+
+        <!-- Button to return to previous page or view product -->
+        <button type="button" class="btn btn-back" onclick="window.history.back()">Back</button>
+    </form>
+</div>
+
+<!-- Optional Bootstrap JS and dependencies (for interactive elements like modal or dropdowns) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
