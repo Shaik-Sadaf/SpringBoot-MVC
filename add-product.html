@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>Product Form</h2>
+    <form th:action="@{/saveproduct}" method="POST" th:object="${productModel}">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" th:field="*{name}" required>
+		<span style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		<br>
+        
+        <label for="price">Price ($):</label>
+        <input type="number" id="price" th:field="*{price}" step="0.01" required>
+		<span style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+		<br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" th:field="*{quantity}" required>
+		<span style="color:red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span>
+		<br>
+
+        <label for="madeIn">Made In:</label>
+        <input type="text" id="madeIn" th:field="*{madeIn}" required>
+		<span style="color:red" th:if="${#fields.hasErrors('madeIn')}" th:errors="*{madeIn}"></span>
+		<br>
+
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" th:field="*{brand}" required>
+		<span style="color:red" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span>
+		<br>
+
+        <button type="submit">Save Product</button>
+        <a th:href="@{/getAllProducts}">View All Products</a>
+    </form>
+</body>
+</html>
+
